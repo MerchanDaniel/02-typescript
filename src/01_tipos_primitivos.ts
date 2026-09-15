@@ -26,58 +26,38 @@
 // - `promedioObjetivo` (number): Debe ser un número decimal (ej. 9.85).
 // - `estaMatriculado` (boolean): Debe ser true.
 
-export const nombreEstudiante: string = "";       // 👈 TODO: Escribe tu nombre aquí
-export const edadEstudiante: number = 0;          // 👈 TODO: Escribe tu edad aquí
-export const promedioObjetivo: number = 0;        // 👈 TODO: Escribe tu promedio objetivo
-export let estaMatriculado: boolean = false;    // 👈 TODO: Cambia a true
+export const nombreEstudiante: string = "Daniel Mercha";       // 👈 TODO: Escribe tu nombre aquí
+export const edadEstudiante: number = 17;          // 👈 TODO: Escribe tu edad aquí
+export const promedioObjetivo: number = 9.82;        // 👈 TODO: Escribe tu promedio objetivo
+export let estaMatriculado: boolean = true;    // 👈 TODO: Cambia a true
 
-/**
- * TODO: Implementa la función `obtenerResumenPersonal` usando Template Strings (${...}).
- * Debe retornar una cadena con este formato exacto:
- * `👤 Estudiante: NOMBRE | 🎂 Edad: EDAD años | 🎯 Meta: PROMEDIO/10 | 📋 Estado: MATRICULADO` (o NO_MATRICULADO si es false)
- */
+
+
 export function obtenerResumenPersonal(): string {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return "":
-  return "";
+  const estado = estaMatriculado ? "Matriculado" : "No Matriculado"
+  return `👤 Estudiante: ${nombreEstudiante} | 🎂 Edad: ${edadEstudiante} años | 🎯 Meta: ${promedioObjetivo}/10 | 📋 Estado: ${estado}`;
 }
 
-// ============================================================================
-// PASO 2: Función para Calcular el Promedio
-// ============================================================================
-/**
- * TODO: Implementa la función `calcularPromedio`.
- * Debe:
- * 1. Recibir `notas`: un arreglo inmutable de números (`readonly number[]`).
- * 2. Si el arreglo está vacío, retornar `0`.
- * 3. Sumar todas las notas y dividir para la cantidad de elementos (`notas.length`).
- * 4. Retornar el resultado como número redondeado a 2 decimales.
- *    (Pista: usa Number((suma / notas.length).toFixed(2)))
- */
+
 export function calcularPromedio(notas: readonly number[]): number {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return 0:
+ if (notas.length == 0){
   return 0;
+ }
+  const suma = notas.reduce((acumulado, nota) => acumulado + nota, 0); const promedio = suma / notas.length;
+  return Number(promedio.toFixed(2));
 }
 
-// ============================================================================
-// PASO 3: Formateador de Ficha Técnica
-// ============================================================================
-/**
- * TODO: Implementa la función `formatearFichaEstudiante`.
- * Parámetros requeridos:
- *  - nombre (string)
- *  - edad (number)
- *  - paralelo ("E1" | "E2") -> Literal Type
- *  - activo (boolean)
- * 
- * Formato de salida requerido:
- *  `[FICHA UETS] NOMBRE_EN_MAYUSCULAS (XX años) - Paralelo: E1 - Estado: MATRICULADO` (o RETIRADO si activo es false)
- */
+
+
+
 export function formatearFichaEstudiante(
   nombre: string,
   edad: number,
   paralelo: "E1" | "E2",
   activo: boolean
 ): string {
-  // 👇 TODO: Escribe tu lógica aquí y reemplaza el return "":
-  return "";
+  const estado = activo ? "MATRICULADO" : "RETIRADO"
+  const nombreMayus= nombre.toLocaleUpperCase();
+
+  return `[FICHA UETS] ${nombreMayus} (${edad} años) - Paralelo: ${paralelo} - Estado: ${estado}`;
 }
